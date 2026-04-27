@@ -72,6 +72,14 @@ acpbench = ["lark>=1.1.9", "tarski[clingo]==0.8.2", "pddl==0.4.2", "kstar-planne
 audiolm_qwen = ["librosa", "soundfile"]
 dev = ["pytest", "pytest-cov", "pytest-xdist", "pre-commit", "requests", "aiohttp", "tenacity", "tqdm", "tiktoken", "sentencepiece", "ruff"]
 ifeval = ["langdetect", "immutabledict", "nltk>=3.9.1"]
+ifbench = [
+    "emoji",
+    "immutabledict",
+    "langdetect",
+    "nltk>=3.9.1",
+    "syllapy",
+    "unicodedata2",
+]
 japanese_leaderboard = ["emoji==2.14.0", "neologdn==0.5.3", "fugashi[unidic-lite]", "rouge_score>=0.1.2"]
 longbench = ["jieba", "fuzzywuzzy", "rouge"]
 libra = ["pymorphy2"]
@@ -85,6 +93,7 @@ wandb = ["wandb>=0.16.3", "pandas", "numpy"]
 zeno = ["pandas", "zeno-client"]
 tasks = [
     "lm_eval[discrim_eval]",
+    "lm_eval[ifbench]",
     "lm_eval[ifeval]",
     "lm_eval[japanese_leaderboard]",
     "lm_eval[longbench]",
