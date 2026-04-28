@@ -2043,15 +2043,16 @@ class WordsPositionChecker(Instruction):
 		words = instructions_util.nltk.word_tokenize(value)
 		if len(words) < 2:
 			return False
-		if words[-1] in string.punctuation:
-			if words[1].lower() == words[-3].lower() == self._keyword.lower():
-				return True
-			else:
-				return False
-		elif words[1].lower() == words[-2].lower() == self._keyword.lower():
-			return True
-		else:
+
+		# Strip all trailing punctuation tokens so the "second to last word"
+		# check is based on words rather than punctuation.
+		while words and words[-1] in string.punctuation:
+			words = words[:-1]
+
+		if len(words) < 2:
 			return False
+
+		return words[1].lower() == words[-2].lower() == self._keyword.lower()
 
 
 class RepeatChangeChecker(Instruction):
